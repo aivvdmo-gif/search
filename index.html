@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Reverse Search</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 120px;
+  }
+  input {
+    width: 280px;
+    padding: 12px;
+    font-size: 18px;
+  }
+  button {
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+  #result {
+    margin-top: 40px;
+    font-size: 22px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+<h1>Reverse Search</h1>
+
+<input id="search" placeholder="Type anything...">
+<button onclick="reverseSearch()">Search</button>
+
+<div id="result"></div>
+
+<script>
+// ここで「逆の言葉」を定義する
+const oppositeWords = {
+  "love": "hate",
+  "happy": "sad",
+  "up": "down",
+  "good": "evil",
+  "light": "dark",
+  "cat": "dog",
+  "big": "small",
+  "life": "death",
+  "openai": "closedmind",
+};
+
+// 検索関数
+function reverseSearch() {
+  const word = document.getElementById("search").value.toLowerCase();
+  let opposite;
+
+  // 逆が定義されている場合
+  if (oppositeWords[word]) {
+    opposite = oppositeWords[word];
+  } else {
+    // 定義されていない場合 → 適当な言葉を返す
+    const random = ["nothingness", "???", "another world", "unknown", "void"];
+    opposite = random[Math.floor(Math.random() * random.length)];
+  }
+
+  document.getElementById("result").textContent =
+    `Opposite of "${word}" → ${opposite}`;
+}
+</script>
+
+</body>
+</html>
